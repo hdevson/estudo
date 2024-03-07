@@ -1,0 +1,41 @@
+O - Princípio do Aberto/Fechado (Open/Closed Principle - OCP): Uma classe deve estar aberta para extensão, mas fechada para modificação. Isso significa que você deve ser capaz de estender o comportamento de uma classe sem alterar seu código fonte.
+
+Exemplo:
+
+java
+Copy code
+// Ruim: Modificando a classe existente para adicionar uma nova funcionalidade
+class Forma {
+    abstract double calcularArea();
+}
+
+class Retangulo extends Forma {
+    double largura;
+    double altura;
+    double calcularArea() { return largura * altura; }
+}
+
+class Circulo extends Forma {
+    double raio;
+    double calcularArea() { return Math.PI * raio * raio; }
+}
+
+// Bom: Adicionando nova funcionalidade sem modificar as classes existentes
+interface Forma {
+    double calcularArea();
+}
+
+class Retangulo implements Forma {
+    double largura;
+    double altura;
+    double calcularArea() { return largura * altura; }
+}
+
+class Circulo implements Forma {
+    double raio;
+    double calcularArea() { return Math.PI * raio * raio; }
+}
+
+class CalculadoraArea {
+    double calcular(Forma forma) { return forma.calcularArea(); }
+}

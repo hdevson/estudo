@@ -1,0 +1,31 @@
+L - Princípio da Substituição de Liskov (Liskov Substitution Principle - LSP): As classes derivadas devem poder substituir suas classes base sem que o comportamento do programa seja alterado de forma indesejada.
+
+Exemplo:
+
+java
+Copy code
+// Ruim: Quebra do LSP
+class Ave {
+    void voar() { /* implementação */ }
+}
+
+class Pinguim extends Ave {
+    void voar() {
+        throw new UnsupportedOperationException("Pinguins não podem voar");
+    }
+}
+
+// Bom: Respeitando o LSP
+interface Ave {
+    void voar();
+}
+
+class Passaro implements Ave {
+    void voar() { /* implementação */ }
+}
+
+class Pinguim implements Ave {
+    void voar() {
+        throw new UnsupportedOperationException("Pinguins não podem voar");
+    }
+}

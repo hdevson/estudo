@@ -1,0 +1,27 @@
+D - Princípio da Inversão de Dependência (Dependency Inversion Principle - DIP): Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações. Além disso, abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
+
+Exemplo:
+
+java
+Copy code
+// Ruim: Alta dependência de implementações concretas
+class ClienteService {
+    ClienteRepository repository = new ClienteRepository();
+
+    void salvarCliente(Cliente cliente) {
+        repository.salvarCliente(cliente);
+    }
+}
+
+// Bom: Dependência invertida para uma abstração
+class ClienteService {
+    ClienteRepository repository;
+
+    ClienteService(ClienteRepository repository) {
+        this.repository = repository;
+    }
+
+    void salvarCliente(Cliente cliente) {
+        repository.salvarCliente(cliente);
+    }
+}

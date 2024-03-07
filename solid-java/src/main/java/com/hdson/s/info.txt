@@ -1,0 +1,23 @@
+S - Princípio da Responsabilidade Única (Single Responsibility Principle - SRP):
+Uma classe deve ter apenas uma razão para mudar. Em outras palavras,
+uma classe deve ter apenas uma responsabilidade.
+
+
+Exemplo:
+
+java
+Copy code
+// Ruim: Uma classe com múltiplas responsabilidades
+class Cliente {
+    void salvarCliente() { /* implementação */ }
+    void enviarEmailConfirmacao() { /* implementação */ }
+}
+
+// Bom: Separação de responsabilidades
+class ClienteRepository {
+    void salvarCliente() { /* implementação */ }
+}
+
+class EmailService {
+    void enviarEmail(String mensagem) { /* implementação */ }
+}

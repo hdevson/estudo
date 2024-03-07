@@ -1,0 +1,24 @@
+I - Princípio da Segregação de Interface (Interface Segregation Principle - ISP): Os clientes não devem ser forçados a depender de interfaces que não usam. Em outras palavras, uma classe não deve ser obrigada a implementar interfaces que ela não utiliza.
+
+Exemplo:
+
+java
+Copy code
+// Ruim: Uma única interface com métodos não relacionados
+interface Animal {
+    void comer();
+    void voar();
+}
+
+// Bom: Interfaces segregadas
+interface AnimalTerrestre {
+    void comer();
+}
+
+interface AnimalAereo {
+    void voar();
+}
+
+class Passaro implements AnimalAereo {
+    void voar() { /* implementação */ }
+}
